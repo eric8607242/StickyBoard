@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>StickyBoard</title>
+</head>
+
+<body>
+    <h1>LOGIN</h1>
+    <form method="POST" action="{% url 'userauth:login' %}">
+        {% csrf_token %}
+        {% for field in form.visible_fields %}
+            {{ field }}
+        {% endfor %}
+        <button type="submit">
+            login 
+        </button>
+    </form>
+</body>
+
+</html>

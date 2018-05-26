@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Signup</title>
+    </head>
+    <body>
+        <h1>SIGNUP</h1>
+        <form method="POST">
+                {% csrf_token %}
+            {% for field in userform.visible_fields %}
+                {{field.label_tag}}
+                {{field}}<br>
+            {% endfor %}
+            {% for field in profileform.visible_fields %}
+                {{field.label_tag}}
+                {{field}}<br>
+            {% endfor %}
+            <button type="submit">
+                Signup
+            </button>
+        </form>
+    </body>
+</html>
