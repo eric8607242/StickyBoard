@@ -5,6 +5,7 @@ from .models import ProfileForm ,UserForm
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -33,4 +34,6 @@ def signup(request):
         userform = UserForm()
         profileform = ProfileForm()
 
-    return render(request,"userauth/signup.html",{'userform':userform,'profileform':profileform})
+    return render(request,"./userauth/signup.html",{'userform':userform,'profileform':profileform})
+
+

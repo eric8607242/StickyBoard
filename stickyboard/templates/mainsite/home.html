@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>STICKYBOARD</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'sty.css' %}">
+</head>
+
+<body>
+    {% csrf_token %}
+    {% if user %}
+        <h3>Hi {{user}}</h3>
+        <a id="test" href="{% url 'mainsite:manageboard' %}">管理板子</a>
+        <a href="{% url 'userauth:logout' %}">登出</a>
+    {% else %}
+        <a href="{% url 'userauth:login' %}">登入</a>
+        <a href="{% url 'userauth:signup' %}">註冊</a>
+    {% endif %}
+</body>
+
+</html>
