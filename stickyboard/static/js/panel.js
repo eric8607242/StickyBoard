@@ -1,27 +1,3 @@
-//$(document).on('submit','#postData',function(e){
-//    alert("dd")
-//    e.preventDefault()
-//    $.ajax({
-//        type:'POST',
-//        url: '/website/stickyBoard/saveBoard/',
-//        data:{
-//            stickyBoard: localStorage["POSTData"],
-//            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-//        },
-//        success: function(response){
-//            if(response == "success"){
-//                alert("Hello")
-//            }
-//            else{
-//                alert(response)
-//            }
-//        },
-//        error: function(){
-//            alert("failed")
-//        },
-//    })
-//})
-
 $('#addBoard').submit(function(e){
     console.log($('#titleInput'))
     e.preventDefault()
@@ -57,11 +33,9 @@ function a_tag_func(event){
 function identiFy(name,close){
     $.ajax({
         type:'POST',
-        url: '/website/checkPanel/', //Check whether this panel created yet
+        url: '/mainsite/createboard/', //Check whether this board created yet
         data:{
-            panelname: name,
-            account: localStorage["account"],
-            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            boardname: name,
         },
         success: function(response){
             if(response == "success"){
@@ -77,27 +51,27 @@ function identiFy(name,close){
     })
 }
 
-function goPanel(panel_name){
-    //alert("tt")
-    //$.ajax({
-    //    type:'POST',
-    //    url: '/website/directPanel/', //Check whether this panel created yet
-    //    data:{
-    //        panel_name: panel_name,
-    //        account: localStorage["account"]
-    //        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-    //    },
-    //    success: function(response){
-    //        if(response == "success"){
-    //        }
-    //        else
-    //            alert("This panelname has been used")
-    //    },
-    //    error: function(){
-    //        alert("Send failed")
-    //    }
-    //})
-    panel_name = panel_name.substr(1,panel_name.length-2)
-    localStorage["panel_name"] = panel_name
-    window.location='localhost:8000/website/directPanel/' + "?" + "account=" +localStorage["account"] + "&" + "panel_name=" + panel_name
+function goPanel(board_name){
+    localStorage["board_name"] = board_name
+    $.ajax({
+       type:'GET',
+       url: '/mainsite/directboard/', //Check whether this panel created yet
+       data:{
+           board_name: board_name,
+       },
+       success: function(response){
+           $('body').html(response);
+           if(response == "success"){
+
+           }
+           else
+               alert("This panelname has been used")
+       },
+       error: function(){
+           alert("Send failed")
+       }
+    })
+    // panel_name = panel_name.substr(1,panel_name.length-2)
+    
+    // window.location='localhost:8000/website/directPanel/' + "?" + "account=" +localStorage["account"] + "&" + "panel_name=" + panel_name
 }

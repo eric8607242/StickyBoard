@@ -4,8 +4,8 @@ $(document).on('submit','#postData',function(e){
         type:'POST',
         url: '/website/stickyBoard/saveBoard/',
         data:{
-            stickyBoard: localStorage["POSTData"],
-            panel_name: localStorage["panel_name"],
+            board_info: localStorage["POSTData"],
+            board_name: localStorage["board_name"],
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
         },
         success: function(response){

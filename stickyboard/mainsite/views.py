@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template.loader import render_to_string
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
@@ -20,19 +21,19 @@ def home(request):
 @login_required(login_url='/account/login/')
 def manageboard(request):
     user = get_user(request)
-    return render(request,"./mainsite/manageboard.html",{"userboard":user.userboardid.all()})
+    return render(request,"./mainsite/usermanage.html",{"userboards":user.userboardid.all()})
 
 
 @csrf_exempt
 def createboard(request):
-    
+    boardname = request.POST['boardname']
     user = get_user(request)
-    board = UserBoardId()
+    board = UserBoardId(board_name=boardname)
     board.save()
     board.user.add(user)
 
     user.userboardid.add(board)
-    return HttpResponse("create success")
+    return HttpResponse("success")
 
 
 def invite(request):
@@ -48,9 +49,16 @@ def invite(request):
         invite_user.userboardid.add(board)
     return HttpResponse("invite_success")
 
+def directboard(request):
+    board_name = request.GET['board_name']
+    user = get_user(request)
+    html = render_to_string("./mainsite/panel.html", {"board_name":board_name, "user":user})
+    # return render(request, "./mainsite/panel.html", {"board_name":board_name, "user":user})
+    return HttpResponse(html)
 
 
 def get_user(request):
     user_id = request.user
     user = User.objects.get(username = user_id)
     return user
+
