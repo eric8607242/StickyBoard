@@ -3,22 +3,34 @@
     <head>
         <meta charset="UTF-8">
         <title>Signup</title>
+        {% load static %}
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/userauth.css' %}">
     </head>
     <body>
-        <h1>SIGNUP</h1>
-        <form method="POST">
-                {% csrf_token %}
-            {% for field in userform.visible_fields %}
-                {{field.label_tag}}
-                {{field}}<br>
-            {% endfor %}
-            {% for field in profileform.visible_fields %}
-                {{field.label_tag}}
-                {{field}}<br>
-            {% endfor %}
-            <button type="submit">
-                Signup
-            </button>
-        </form>
+        <div class="form_container">
+            <div class = "userauth_form">
+                <div class = "form_title"><h1>Sign up</h1></div>
+                <form method="POST">
+                        {% csrf_token %}
+                    <div class = "userauth_input">
+                        {% for field in userform.visible_fields %}
+                            {{field.label_tag}}<br>
+                            {{field}}<br>
+                        {% endfor %}
+                        {% for field in profileform.visible_fields %}
+                            {{field.label_tag}}<br>
+                            {{field}}<br>
+                        {% endfor %}
+                    </div>
+                    <br><br>
+                    <div class = "userauth_submit">
+                        <button type="submit">
+                            Signup
+                        </button>
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

@@ -24,7 +24,10 @@
         $(document).ready(function(){
             $("#create_board").click(function(){
                 $.post("{% url 'mainsite:createboard' %}",
-                    {},
+                    {
+						test:"1234",
+						test1:[1,2,3]
+					},
                     function(data){
                         alert(data);
                     }

@@ -21,10 +21,10 @@ class UserBoardId(models.Model):
 
 #form type
 class UserForm(UserCreationForm):
-    username = forms.CharField(label='帳號',max_length = 100)
-    email = forms.EmailField(label='信箱')
-    password1 = forms.CharField(label='密碼',max_length = 100)
-    password2 = forms.CharField(label='確認密碼',max_length = 100)
+    username = forms.CharField(label='Username',max_length = 100)
+    email = forms.EmailField(label='Email')
+    password1 = forms.CharField(label='Password',max_length = 100)
+    password2 = forms.CharField(label='Password(confirm)',max_length = 100)
     class Meta:
         #可有可無,因為default已經設成User
         model = User

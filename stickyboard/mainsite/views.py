@@ -25,8 +25,8 @@ def manageboard(request):
 
 @csrf_exempt
 def createboard(request):
+    
     user = get_user(request)
-
     board = UserBoardId()
     board.save()
     board.user.add(user)

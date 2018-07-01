@@ -4,19 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <title>StickyBoard</title>
+    {% load static %}
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'css/userauth.css' %}">
 </head>
 
 <body>
-    <h1>LOGIN</h1>
-    <form method="POST" action="{% url 'userauth:login' %}">
-        {% csrf_token %}
-        {% for field in form.visible_fields %}
-            {{ field }}
-        {% endfor %}
-        <button type="submit">
-            login 
-        </button>
-    </form>
+    
+    <div class="form_container">
+        <div class = "userauth_form">
+            <div class = "form_title"><h1>Log in</h1></div>
+            <form method="POST" action="{% url 'userauth:login' %}">
+                {% csrf_token %}
+                <div class = "userauth_input">
+                    {% for field in form.visible_fields %}
+                        {{ field.label_tag }}<br>
+                        {{ field }}<br>
+                        <br>
+                    {% endfor %}
+                </div>
+                <br><br><br>
+                <div class = "userauth_submit">
+                    <button type="submit">
+                        login 
+                    </button>
+                </div>
+                <br><br>
+            </form>
+        </div>
+    </div>
+
 </body>
 
 </html>
