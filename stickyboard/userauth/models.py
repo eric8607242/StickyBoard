@@ -10,11 +10,13 @@ class Profile(models.Model):
     #When the referenced object is deleted, also delete the objects that have references to it 
     user = models.OneToOneField(User,related_name = 'user_profile',on_delete=models.CASCADE)
 
-class UserBoardId(models.Model):
+class Panel(models.Model):
     #板子內部所需要的資訊
     user = models.ManyToManyField(
         User,related_name = 'userboardid'
     )
+
+    panel_name = models.CharField(max_length = 20)
     
 
 
@@ -37,4 +39,12 @@ class ProfileForm(forms.ModelForm):
         fields = ['test']
 
 
+class Note(models.Model):                                                          
+    panel = models.ForeignKey(Panel, on_delete=models.CASCADE)
+    title = models.CharField(max_length=20)
+    comment = models.TextField(max_length=800)
+    color = models.TextField(max_length=10)
+    background_color = models.TextField(max_length=10)                                                                                                                                   
+    date = timezone.now()
+    objects = models.Manager()
 
