@@ -1,61 +1,97 @@
-.form_container{
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 85vh;
+    padding-bottom:50px;
+    /* background-color: blue; */
 }
 
-.form_title{
-    color:#ab7a30;
+.userauth-form {
+    width: 600px;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* background-color: green; */
+}
+
+.form-title {
     text-align: center;
-    font-size: 20px;
-
+    flex-basis: auto;
+    font-size: 28px;
+    color: #dbac66;
 }
 
-.userauth_form{
-    color:#ab7a30;
-    border-radius: 15px;
-    box-shadow: 3px 6px 6px 6px rgba(0,0,0,0.2);
-    padding:10px;
-    height:auto;
-    width:400px;
+.form-title h1 {
+    font-weight: normal;
 }
 
-.userauth_input{
-    position:relative;
-    left:30%;
-    font-weight: bold;
-    font-size: 20px;
+input[type=text],
+input[type=password],
+input[type=email]
+{
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 24px;
 }
 
-.userauth_input input{
-    border-radius: 5px;
-    border: 1px solid #ab7a30;
-    margin:4px 2px;
-    height:25px;
-    
+.userauth-input {
+    margin-bottom: 25px;
 }
 
+.userauth-input>label {
+    color: rgb(95, 95, 95);
+    font-size: 26px;
+}
 
+.userauth-submit {
+    text-align: center;
+    margin-bottom: 15px;
+}
 
-.userauth_submit button{
-    position:relative;
-    left:40%;
-
+.login-btn {
     background-color: white;
-    border:  1px solid #ab7a30;
-    border-radius:5px;
-    color: #ab7a30;
-    padding: 10px 20px;
+    color: #dbac66;
+    border: 1px solid #dbac66;
+    border-radius: 4px;            
+    padding: 16px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 18px;
     margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
     cursor: pointer;
 }
 
-.userauth_submit button:hover{
-    background-color: #ab7a30;
-    color: #fff;
+.userauth-submit :hover{
+    background-color: #dbac66;
+    color: #ffffff;
 }
 
+@media screen and (max-width: 650px) {
+    .userauth-form {
+        width: 400px;
+        min-height: 500px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .userauth-form {
+        width: 300px;
+        min-height: 450px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .userauth-form {
+        width: 250px;
+        min-height: 450px;
+    }
+}

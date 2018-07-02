@@ -1,27 +1,29 @@
 .topnav {
     overflow: hidden;
-    background-color: #303030;
-    border-bottom: 1px solid rgb(95, 95, 95);
-    -webkit-box-shadow: 10px 4px #636363;
-            box-shadow: 10px 4px #636363;
-    margin-bottom: 20px;
+    background-color: #ffffff;
+    border-bottom: 3px solid rgb(112, 112, 112);
+    -webkit-box-shadow: 10px 2px #c9c9c9;
+    box-shadow: 10px 2px #c9c9c9;
 }
 
 .topnav .menu-active,
 .topnav a:hover {
-    /* background-color: #ab7a30; */
-    color: #f1c37f;
+    color: #ffffff;
+    background-color: #f1c37f;
 }
 
 .topnav a {
     float: left;
     display: block;
-    color: rgb(255, 255, 255);
+    color: #dbac66;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 20px;
     border-right: 1px solid rgb(95, 95, 95);
+    -webkit-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    transition-duration: 0.2s;
 }
 
 .topnav a:nth-last-child(2),
@@ -32,6 +34,27 @@
 
 .topnav .icon {
     display: none;
+}
+
+footer {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    font-size: 20px;
+    background: rgb(17, 17, 17);
+    color: #dbac66;
 }
 
 @media screen and (max-width: 700px) {
@@ -57,5 +80,11 @@
         float: none;
         display: block;
         text-align: left;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    footer{
+        font-size: 14px;
     }
 }
