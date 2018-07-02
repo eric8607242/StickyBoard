@@ -1,0 +1,102 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.my-wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+section{
+    padding-bottom:50px;   /* Height of the footer */
+}
+
+.member-outer {
+    background-color: rgb(255, 255, 255);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.member-inner {
+    width: 100%;
+    max-width: 1400px;
+    min-height: 85vh;
+    margin-top: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    background-color: rgb(255, 255, 255);
+}
+
+.member-card {
+    min-height: 550px;
+    max-width: 420px;
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.avatar {
+    max-width: 350px;
+    min-width: 280px;
+    height: 280px;
+    border-radius: 100%;
+}
+
+.contact-icons {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-bottom: 10px;
+}
+
+.developer-name {
+    margin-bottom: 0px;
+}
+
+.developer-description {
+    padding-top: 15px;
+    border-top: 2px solid #dbac66;
+}
+
+@media screen and (max-width: 450px) {
+    .developer-description {
+        padding-left: 20px;
+        padding-right: 20px;        
+    }
+}

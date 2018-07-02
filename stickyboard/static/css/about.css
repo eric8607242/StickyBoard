@@ -1,0 +1,33 @@
+a {
+    text-decoration: none;
+}
+
+.developer-name {
+    color: #dbac66;
+    font-size: 32px;
+}
+
+.developer-title {
+    color: #dbac66;
+    font-size: 16px;
+}
+
+.contact-icons i{
+    color: #dbac66;
+    opacity: 0.7;
+}
+
+.contact-icons i:hover {
+    opacity: 1;    
+    -webkit-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.developer-description {
+    color: rgb(95, 95, 95);
+    font-size: 22px;
+}
