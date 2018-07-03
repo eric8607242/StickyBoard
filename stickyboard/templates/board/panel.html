@@ -4,7 +4,8 @@
     <script>
         localStorage["boardName"] = "{{ board_name }}";
         localStorage["boardID"] = {{ board_id }}
-    </script> {% load static %}
+    </script> 
+    {% load static %}
     <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jQuery.min.js' %}"></script>
 
@@ -38,10 +39,11 @@
                 </a>
         </div>
     
-        <form id="postData"> {%csrf_token%}
-            <button type="submit" class="btn btn-secondary">Post Data</button>
-            <button id="addCard" type="submit" class="btn btn-secondary">Add Card</button>
+        <div id = "btn_post" > {%csrf_token%}
+            <button id="postData" class="btn btn-secondary">Post Data</button>
+            <button id="addCard" class="btn btn-secondary">Add Card</button>    
         </form>
+        
         <header>
 
             <div id="react-container"></div>
@@ -69,17 +71,6 @@
     document.getElementById("addCard").onclick = function (e){
         EntryPoint.addCard()
     }
-
-    document.querySelector('#saveCard').onclick = function (e) {
-        setTimeout(function () {
-            console.log("save click");
-            console.log(localStorage["POSTData"])
-            boardSocket.send(JSON.stringify({
-                'note_info': localStorage["POSTData"],
-            }));
-        },500)
-    }
-
 </script>
 
 </html>

@@ -33,7 +33,7 @@ def saveboard(request):
                 )
                 new_note.save()
             else:
-                edit_note = Note.objects.get(note_id = note_info["board_id"])
+                edit_note = Note.objects.get(note_id = note_info["board_id"], board = board)
                 edit_note.title = note_info['title']
                 edit_note.comment = note_info['comment']
                 edit_note.color = note_info['color']
