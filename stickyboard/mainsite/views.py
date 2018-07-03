@@ -16,7 +16,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 def home(request):
     current_user = None
-    print(request.user.is_authenticated)
     if request.user.is_authenticated is True:
         current_user = request.user
     return render(request,"./mainsite/index.html",{'user':current_user})
@@ -31,8 +30,6 @@ def about(request):
 @login_required(login_url='/account/login/')
 def manageboard(request):
     user = request.user
-    for t in user.userboardid.all():
-        print(t.board_name)
     return render(request,"./mainsite/usermanage.html",{"user":user,"userboards":user.userboardid.all()})
 
 

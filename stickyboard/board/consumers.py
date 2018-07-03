@@ -34,7 +34,6 @@ class BoardConsumer(AsyncWebsocketConsumer):
 
     async def board_update(self, event):
         note_info = event['note_info']
-        print(note_info)
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
             'note_info': note_info

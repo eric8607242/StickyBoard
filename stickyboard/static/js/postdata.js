@@ -2,7 +2,6 @@ $(document).on('submit','#postData',function(e){
     EntryPoint.saveCard()
     console.log("-----------------")
     e.preventDefault()
-    console.log(localStorage["boardName"])
     $.ajax({
         type:'POST',
         url: '/board/saveboard/',
