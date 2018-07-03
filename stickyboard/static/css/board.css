@@ -1,0 +1,201 @@
+/* .nav .nav-item {
+    border: 1px solid #dbac66;
+} */
+
+.welcome-section h1 {
+    font-weight: normal;
+    font-size: 48px;
+    text-align: center;
+    color: rgb(95, 95, 95);
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid rgb(209, 209, 209);
+    margin-bottom: 30px;
+}
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaaaaa;
+    align-self: flex-end;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h5 {
+    font-size: 40px;
+    font-weight: normal;
+    color: #dbac66;
+    text-align: center;
+}
+
+.modal-body {
+    font-size: 28px;
+    color: rgb(95, 95, 95);
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+}
+
+input[type=text] {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.modal-btn {
+    border-radius: 4px;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 8px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.create-btn {
+    color: white;
+    background-color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.create-btn:hover {
+    color: steelblue;
+    background-color: white;
+}
+
+.delete-btn {
+    color: white;
+    background-color: rgb(241, 137, 96);
+    border: 1px solid rgb(241, 137, 96);
+}
+
+.delete-btn:hover {
+    color: rgb(241, 137, 96);
+    background-color: white;
+}
+
+.invite-btn {
+    color: white;
+    background-color: rgb(111, 172, 128);
+    border: 1px solid rgb(111, 172, 128);
+}
+
+.invite-btn:hover {
+    color: rgb(111, 172, 128);
+    background-color: white;
+}
+
+.cancel-btn {
+    color: #ffffff;
+    background-color: rgb(168, 168, 168);
+    border: 1px solid rgb(168, 168, 168);
+}
+
+.cancel-btn:hover {
+    color: rgb(168, 168, 168);
+    background-color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+    color: #dbac66;
+}
+
+ul {
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+ul li {
+    border: 1px solid #dbac66;
+    color: #dbac66;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    min-width:280px;
+    line-height:140px;
+    font-size:40px;
+}
+
+ul li:hover {
+    background-color: #dbac66;
+}
+
+ul li:hover>a {
+    cursor: pointer;
+    color: #ffffff;
+}
+
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+}
+
+@media screen and (min-width:768px) {
+
+}
