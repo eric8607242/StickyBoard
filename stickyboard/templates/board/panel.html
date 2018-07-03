@@ -57,8 +57,9 @@
     boardSocket.onmessage = function (e) {
         var data = JSON.parse(e.data);
         var note_info = data['note_info'];
-        EntryPoint.receiveData(note_info)
+        // EntryPoint.receiveData(note_info)
         localStorage['POSTData'] = note_info;
+        console.log(localStorage['POSTData'])
     };
 
     boardSocket.onclose = function (e) {

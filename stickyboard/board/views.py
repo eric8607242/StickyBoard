@@ -22,7 +22,7 @@ def saveboard(request):
         board_id = board.id
         
         for note_info in board_info:
-            if checknote(note_info):
+            if checknote(note_info, board):
                 new_note = Note(
                     title = note_info['title'],
                     comment = note_info['comment'],
@@ -32,6 +32,7 @@ def saveboard(request):
                     board = board,
                 )
                 new_note.save()
+                print(note_info)
             else:
                 edit_note = Note.objects.get(note_id = note_info["board_id"])
                 edit_note.title = note_info['title']
@@ -48,8 +49,8 @@ def saveboard(request):
                 note.delete()
         return HttpResponse("success")
 
-def checknote(note_info):
-    note = Note.objects.filter(note_id = note_info["board_id"])
+def checknote(note_info, board):
+    note = Note.objects.filter(note_id = note_info["board_id"], board = board)
     if note.count() ==  0:
         return True
     return False

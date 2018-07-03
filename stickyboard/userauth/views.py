@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.http import HttpResponse
 
 from .models import ProfileForm ,UserForm
@@ -26,9 +27,7 @@ def signup(request):
             if user is not None:
                 login(request,user)
 
-            return HttpResponse("success")
-        return HttpResponse("failed")
-
+            return redirect('/')
     else:
         userform = UserForm()
         profileform = ProfileForm()

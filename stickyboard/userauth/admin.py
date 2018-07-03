@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Profile)
 admin.site.register(UserBoardId)
 admin.site.register(Note)
+admin.site.register(InviteStatus)

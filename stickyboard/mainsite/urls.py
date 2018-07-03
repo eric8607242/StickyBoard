@@ -10,5 +10,7 @@ urlpatterns = [
     path(r'createboard/', views.createboard, name='createboard'),
     path(r'invite/', views.invite, name='invite'),
     path(r'invitestatus/', views.invitestatus, name='invitestatus'),
-    path(r'deleteboard/', views.deleteboard, name='deleteboard')
+    path(r'deleteboard/', views.deleteboard, name='deleteboard'),
+    path(r'refuserelation/', views.refuserelation, name='refuserelation'),
+    path(r'acceptrelation/', views.acceptrelation, name='acceptrelation')
 ]

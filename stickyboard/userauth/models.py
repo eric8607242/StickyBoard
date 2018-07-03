@@ -26,6 +26,12 @@ class Note(models.Model):
     note_id = models.PositiveIntegerField()  
 
 
+class InviteStatus(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    board = models.OneToOneField(UserBoardId, on_delete=models.CASCADE)
+    board_name = models.CharField(max_length=20)
+    inviter = models.CharField(max_length=20)
+
 #form type
 class UserForm(UserCreationForm):
     username = forms.CharField(label='Username',max_length = 100)
