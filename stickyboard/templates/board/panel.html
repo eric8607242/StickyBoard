@@ -25,7 +25,7 @@
                 
                 {% if user %}
                     <a href="">{{user}}</a>
-                    <a href="" class="menu-active">Panel Name : {{board_name}}</a>
+                    <a href="" class="menu-active">Board Name : {{board_name}}</a>
                     <a href="{% url 'userauth:logout' %}">Log out</a>
                     <a href="{% url 'mainsite:manageboard' %}">My Board</a>
                 {% else %}
@@ -57,9 +57,8 @@
     boardSocket.onmessage = function (e) {
         var data = JSON.parse(e.data);
         var note_info = data['note_info'];
-        // EntryPoint.receiveData(note_info)
+        EntryPoint.receiveData(note_info)
         localStorage['POSTData'] = note_info;
-        console.log(localStorage['POSTData'])
     };
 
     boardSocket.onclose = function (e) {
@@ -68,14 +67,13 @@
 
 
     document.querySelector('#saveCard').onclick = function (e) {
-        // console.log("--------------")
-        // setTimeout(function () {
-        //     console.log("save click");
-        //     console.log(localStorage["POSTData"])
-        //     boardSocket.send(JSON.stringify({
-        //         'note_info': localStorage["POSTData"],
-        //     }));
-        // },3000)
+        setTimeout(function () {
+            console.log("save click");
+            console.log(localStorage["POSTData"])
+            boardSocket.send(JSON.stringify({
+                'note_info': localStorage["POSTData"],
+            }));
+        },500)
     }
 
 </script>

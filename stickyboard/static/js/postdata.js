@@ -1,7 +1,5 @@
 $(document).on('submit','#postData',function(e){
-    console.log("-----------------")
     e.preventDefault()
-    console.log(localStorage["boardName"])
     $.ajax({
         type:'POST',
         url: '/board/saveboard/',

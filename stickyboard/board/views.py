@@ -32,7 +32,6 @@ def saveboard(request):
                     board = board,
                 )
                 new_note.save()
-                print(note_info)
             else:
                 edit_note = Note.objects.get(note_id = note_info["board_id"])
                 edit_note.title = note_info['title']
