@@ -22,8 +22,7 @@ def signup(request):
             
             profileform.user = user
             profileform.save()
-
-            #利用剛剛存入db的return user登入
+            
             if user is not None:
                 login(request,user)
 

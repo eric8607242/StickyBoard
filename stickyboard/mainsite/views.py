@@ -13,15 +13,22 @@ import random
 
 def home(request):
     current_user = None
-    if request.user.is_authenticated:
+    print(request.user.is_authenticated)
+    if request.user.is_authenticated is True:
         current_user = request.user
-    return render(request,"./mainsite/home.html",{'user':current_user})
+        return render(request,"./mainsite/index.html",{'user':current_user})
+    return render(request,"./mainsite/index.html",{"user":None})
+
+def about(request):
+    return render(request, "./mainsite/about.html")
 
 
 @login_required(login_url='/account/login/')
 def manageboard(request):
-    user = get_user(request)
-    return render(request,"./mainsite/usermanage.html",{"userboards":user.userboardid.all()})
+    user = request.user
+    for t in user.userboardid.all():
+        print(t)
+    return render(request,"./mainsite/usermanage.html",{"user":user,"userboards":user.userboardid.all()})
 
 
 @csrf_exempt
@@ -35,27 +42,38 @@ def createboard(request):
     user.userboardid.add(board)
     return HttpResponse("success")
 
-
+@csrf_exempt
 def invite(request):
-    user = get_user(request)
-    
-    board_id = request.POST['board_id']
-    invite_username = request.POST['user_id']
-    
-    invite_user = User.objects.get(username=invite_username)
-    
-    if user.userboardid.get(id=board_id):
-        board = UserBoardId.objects.get(id=board_id)
-        invite_user.userboardid.add(board)
-    return HttpResponse("invite_success")
+    if request.method == "POST":
+        user = get_user(request)
+        
+        board_name = request.POST['board_name']
+        invite_username = request.POST['invitee']
+        print(invite_username)
+        invite_user = User.objects.get(username=invite_username)
+        
+        if user.userboardid.get(board_name=board_name):
+            board = UserBoardId.objects.get(board_name=board_name)
+            board.user.add(invite_user)
+            invite_user.userboardid.add(board)
+        return HttpResponse("invite_success")
 
-def directboard(request):
-    board_name = request.GET['board_name']
-    user = get_user(request)
-    html = render_to_string("./mainsite/panel.html", {"board_name":board_name, "user":user})
-    # return render(request, "./mainsite/panel.html", {"board_name":board_name, "user":user})
-    return HttpResponse(html)
+def invitestatus(request):
+    return HttpResponse("111")
 
+
+def deleteboard(request, **kwargs):
+    
+    if request.method == "POST":
+        board_name = request.POST['board_name']
+        board_id = request.POST['board_id']
+        user = get_user(request)
+
+        board = UserBoardId.objects.get(id = board_id, user=user)
+        if board is not False:
+            board.delete()
+            return HttpResponse("success")
+        return HttpResponse("failed")
 
 def get_user(request):
     user_id = request.user
