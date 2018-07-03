@@ -33,7 +33,7 @@ function a_tag_func(event){
 function identiFy(name,close){
     $.ajax({
         type:'POST',
-        url: '/mainsite/createboard/', //Check whether this board created yet
+        url: '/createboard/', //Check whether this board created yet
         data:{
             boardname: name,
         },
@@ -49,29 +49,4 @@ function identiFy(name,close){
             alert("Send failed")
         }
     })
-}
-
-function goPanel(board_name){
-    localStorage["board_name"] = board_name
-    $.ajax({
-       type:'GET',
-       url: '/mainsite/directboard/', //Check whether this panel created yet
-       data:{
-           board_name: board_name,
-       },
-       success: function(response){
-           $('body').html(response);
-           if(response == "success"){
-
-           }
-           else
-               alert("This panelname has been used")
-       },
-       error: function(){
-           alert("Send failed")
-       }
-    })
-    // panel_name = panel_name.substr(1,panel_name.length-2)
-    
-    // window.location='localhost:8000/website/directPanel/' + "?" + "account=" +localStorage["account"] + "&" + "panel_name=" + panel_name
 }
