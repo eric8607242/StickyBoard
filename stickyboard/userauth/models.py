@@ -16,10 +16,21 @@ class UserBoardId(models.Model):
     user = models.ManyToManyField(
         User,related_name = 'userboardid'
     )
-    
-    
+
+class Note(models.Model):                                                              
+    board = models.ForeignKey(UserBoardId, on_delete=models.CASCADE)
+    title = models.CharField(max_length=20)
+    comment = models.TextField(max_length=800)
+    color = models.TextField(max_length=10)
+    background_color = models.TextField(max_length=10) 
+    note_id = models.PositiveIntegerField()  
 
 
+class InviteStatus(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    board = models.OneToOneField(UserBoardId, on_delete=models.CASCADE)
+    board_name = models.CharField(max_length=20)
+    inviter = models.CharField(max_length=20)
 
 #form type
 class UserForm(UserCreationForm):
@@ -38,11 +49,4 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['test']
 
-
-class Note(models.Model):                                                          
-    board = models.ForeignKey(UserBoardId, on_delete=models.CASCADE)
-    title = models.CharField(max_length=20)
-    comment = models.TextField(max_length=800)
-    color = models.TextField(max_length=10)
-    background_color = models.TextField(max_length=10)    
 

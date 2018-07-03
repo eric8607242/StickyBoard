@@ -21,6 +21,7 @@ $('#subBoard').submit(function(e){
 })
 
 $('#invite').submit(function(e){
+    console.log("------------------")
     e.preventDefault()
     inviter = $('#my_name').val()
     invitee = $('#friend_name').val()
@@ -66,10 +67,9 @@ function a_tag_func(event){
 function identiFy(name,close){
     $.ajax({
         type:'POST',
-        url: '/website/checkPanel/', //Check whether this panel created yet
+        url: '/createboard/', //Check whether this board created yet
         data:{
-            panelname: name,
-            account: localStorage["account"],
+            boardname: name,
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
         },
         success: function(response){
@@ -89,18 +89,13 @@ function identiFy(name,close){
 function delete_board(name,close){
     $.ajax({
         type:'POST',
-        url: '/website/checkPanel/', //Check whether this panel created yet
+        url: '/deleteboard/', //Check whether this panel created yet
         data:{
-            panelname: name,
-            account: localStorage["account"],
-            delete : "delete",
+            board_name: name,
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
         },
         success: function(response){
             if(response == "success"){
-                alert("This panel hasn't exist")
-            }
-            else{
                 sub_A_Tag(name)
                 close.click()
             }
@@ -111,15 +106,13 @@ function delete_board(name,close){
     })
 }
 
-function invite_friend(panel_name , inviter, invitee){
+function invite_friend(board_name , inviter, invitee){
     $.ajax({
         type:'POST',
-        url: '/website/invite_friend/', //Check whether this panel created yet
+        url: '/invite/', //Check whether this panel created yet
         data:{
-            panel_name: panel_name,
-            inviter: inviter,
+            board_name: board_name,
             invitee: invitee,
-            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
         },
         success: function(response){
             alert(response)
@@ -133,9 +126,8 @@ function invite_friend(panel_name , inviter, invitee){
 function get_relation(){
     $.ajax({
         type:'POST',
-        url: '/website/get_relation/',
+        url: '/invitestatus/',
         data:{
-            account: localStorage["account"],
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
         },
         success: function(response){
@@ -201,9 +193,8 @@ function delete_relation(event){
     let invitee_name = localStorage["account"]
     $.ajax({
         type:'POST',
-        url: '/website/delete_relation/',
+        url: '/refuserelation/',
         data:{
-            invitee_name: invitee_name,
             inviter_name: inviter_name,
             panel_name: panel_name,
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
@@ -228,13 +219,11 @@ function accept_relation(event){
     let tr_tag = event.target.parentElement.parentElement
     let inviter_name = tr_tag.childNodes[0].textContent
     let panel_name = tr_tag.childNodes[1].textContent
-    let invitee_name = localStorage["account"]
-    console.log("inviter name is " + inviter_name + " invitee name is " + invitee_name + " panel name is " + panel_name)
+    console.log(panel_name)
     $.ajax({
         type:'POST',
-        url: '/website/accept_relation/',
-        data:{
-            invitee_name: invitee_name,
+        url: '/acceptrelation/',
+        data:{  
             inviter_name: inviter_name,
             panel_name: panel_name,
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()

@@ -4,9 +4,13 @@ from . import views
 app_name = 'mainsite'
 
 urlpatterns = [
-    path(r'home/',views.home,name='home'),
-    path(r'manageboard/',views.manageboard,name='manageboard'),
-    path(r'mainsite/createboard/',views.createboard,name='createboard'),
-    path(r'invite/',views.invite,name='invite'),
-    re_path(r'^mainsite/directboard/$',views.directboard,name='directboard'),
+    path(r'', views.home, name='home'),
+    path(r'about/', views.about, name='about'),
+    path(r'manageboard/', views.manageboard, name='manageboard'),
+    path(r'createboard/', views.createboard, name='createboard'),
+    path(r'invite/', views.invite, name='invite'),
+    path(r'invitestatus/', views.invitestatus, name='invitestatus'),
+    path(r'deleteboard/', views.deleteboard, name='deleteboard'),
+    path(r'refuserelation/', views.refuserelation, name='refuserelation'),
+    path(r'acceptrelation/', views.acceptrelation, name='acceptrelation')
 ]

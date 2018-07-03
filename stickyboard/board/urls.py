@@ -2,7 +2,11 @@ from django.urls import path, re_path
 
 from . import views
 
+app_name = 'board'
+
 urlpatterns = [
-    re_path(r'^$', views.index, name='index'),
-    re_path(r'^(?P<room_name>[^/]+)/$', views.room, name='room'),
+    path(r'saveboard/', views.saveboard, name='saveboard'),
+    path(r'loadboard/', views.loadboard, name='loadboard'),
+    re_path(r'^directboard/(?P<board_name>\w+)/(?P<board_id>\d+)/$',views.directboard,name='directboard'),
 ]
+

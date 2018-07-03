@@ -14,13 +14,11 @@
     </head>
     <body>
         <header>
-           <!--form id="postData"> {%csrf_token%}
-                <button type="submit" class="btn btn-primary">Post data</button> 
-           </form-->
-           <h1> Welcome {{user.user_name}} </h1>             
+           <h1> Welcome {{user}} </h1>             
         </header>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createBoard"> Create Board </button>
-        <!--div id="react-container"></div-->
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#deleteBoard"> Delete Board </button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#invite"> Invite People </button>
         <!-- Modal -->
         <div class="modal fade" id="createBoard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered"
@@ -47,17 +45,80 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="deleteBoard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered"
+                 role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Board</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="titleInput">Board Name You want to delete</label>
+                            <input type="text" class="form-control" id="deleteInput"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <form id="subBoard"> {%csrf_token%} 
+                            <button type="submit"  class="btn btn-primary">Delete Board</button>
+                            <button id="closeBoard2" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="invite" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered"
+                 role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Invite Friends</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="panel_name">Board Name</label>
+                            <input type="text" class="form-control" id="panel_name"/>
+                            <label for="my_name">My Name</label>
+                            <input type="text" class="form-control" id="my_name"/>
+                            <label for="friend_name"> Friend Name</label>
+                            <input type="text" class="form-control" id="friend_name"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <form id="invite"> {%csrf_token%} 
+                            <button type="submit"  class="btn btn-primary">Invite</button>
+                            <button id="closeBoard3" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div>
             <ul class='nav' id="panel-container">
                 {% for board in userboards %}
                     <li class="nav-item">
-                        <a href="#" class="nav-link" onClick="a_tag_func(event)"> {{board.board_name}} </a>
+                        <a href="{% url 'board:directboard' board.board_name board.id %}" class="nav-link" > {{board.board_name}} </a>
                     </li>
                 {% endfor %}
-            </ul> 
+            </ul>
+            <table id="invitation" class="table">
+                <tbody id="invitation_table">
+                    <tr>
+                        <td>Inviter</td>
+                        <td>Panel Name</td>
+                        <td>Accept</td>
+                        <td>Cancel</td>
+                    </tr>
+                <tbody>
+            </table>
         </div>
     </body>
     
     <script type="text/javascript" src="{% static 'js/panel.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/bundle.js' %}"></script>
 </html>
