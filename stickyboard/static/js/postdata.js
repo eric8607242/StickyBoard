@@ -1,6 +1,10 @@
-$(document).on('submit','#postData',function(e){
+$(document).on('click','#postData',function(e){
     EntryPoint.saveCard()
-    console.log("-----------------")
+    
+    boardSocket.send(JSON.stringify({
+        'note_info': localStorage["POSTData"],
+    }));
+
     e.preventDefault()
     $.ajax({
         type:'POST',
